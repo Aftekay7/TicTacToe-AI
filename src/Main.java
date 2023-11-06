@@ -10,7 +10,7 @@ import NeuralNetwork.Network;
 public class Main {
     static Scanner scanner = new Scanner(System.in);
     private static int trainingGames = 5000; //Number of Played Games;
-    private static int layerCount = 4; //depth of the network/number of layers.
+    private static int layerCount = 5; //depth of the network/number of layers.
     private static int epochCount = 100; //number of epoches the whole network is trained.
 
     public static void main(String[] args) {

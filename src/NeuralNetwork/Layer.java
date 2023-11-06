@@ -12,7 +12,7 @@ public class Layer {
     public Layer () {
         layerCount++;
         layerPos = layerCount;
-        this.weight = Matrix.constructWeight();
+        this.weight = new Matrix(true);
         this.bias = new Matrix();
 
 
@@ -47,7 +47,7 @@ public class Layer {
 
 
     public void gradientDescend (Matrix input, Matrix target) {
-        double stepSize = 0.1;
+        double stepSize = 0.01;
         double convergence = 0.001;
 
         boolean init;
@@ -100,7 +100,7 @@ public class Layer {
                     
                     
                     //bias-shift
-                    if (reluBody <= 0 && init && epoch == 1) {
+                    if (reluBody < 0 && init && epoch == 1) {
         
                         double newBias = INPUT_1*WEIGHT_1 + INPUT_2 * WEIGHT_2 + INPUT_3 * WEIGHT_3;
                         this.bias.setValue((-1)* newBias + stepSize, index);
@@ -159,8 +159,8 @@ public class Layer {
 
     //updates the weights individually
     public void gradientDescend2 (Matrix input, Matrix target) {
-        double stepSize = 0.1;
-        double convergence = 0.001;
+        double stepSize = 0.01;
+        double convergence = 0.0001;
 
         boolean init;
         double error;
@@ -210,7 +210,7 @@ public class Layer {
                     //may only be called in the first iteration.
                     
                     //bias-shift
-                    if (reluBody <= 0 && init && epoch == 1 && layerPos != 1) {
+                    if (reluBody <= 0 && init && epoch == 1 && layerPos == 0) {
         
                         double newBias = INPUT_1*WEIGHT_1 + INPUT_2 * WEIGHT_2 + INPUT_3 * WEIGHT_3;
                         this.bias.setValue((-1)* newBias + stepSize, index);
