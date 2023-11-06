@@ -33,7 +33,7 @@ public class Layer {
         
 
         for (int i = 0; i < inputs.length; i++) {
-            gradientDescend(inputs[i], targets[i]);
+            gradientDescend2(inputs[i], targets[i]);
 
             double test = targets[i].calcMSE(compute(inputs[i]));
             if ( Double.isNaN(test) ) {
