@@ -195,7 +195,7 @@ public class Layer {
             
             int iterations = 0;
             //adjusts the weights until minimum is found.
-            while (error > convergence && iterations < 50) {
+            while (error > convergence && iterations < 100) {
                 WEIGHT_1 = this.weight.getValue(indices[0]);
                 WEIGHT_2 = this.weight.getValue(indices[1]);
                 WEIGHT_3 = this.weight.getValue(indices[2]);
@@ -210,7 +210,7 @@ public class Layer {
                     //may only be called in the first iteration.
                     
                     //bias-shift
-                    if (reluBody <= 0 && init && epoch == 1 && layerPos == 0) {
+                    if (reluBody <= 0 && init && epoch == 1 && layerPos == 0 && BIAS < 7) {
         
                         double newBias = INPUT_1*WEIGHT_1 + INPUT_2 * WEIGHT_2 + INPUT_3 * WEIGHT_3;
                         this.bias.setValue((-1)* newBias + stepSize, index);
