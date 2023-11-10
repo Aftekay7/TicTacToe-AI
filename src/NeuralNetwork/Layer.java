@@ -233,7 +233,6 @@ public class Layer {
                     this.weight.setValue(newWeight, index);
                     error = Math.pow(WEIGHT_I - newWeight,2);
 
-                    //init = false;
                     iterations++;
             }   
         }
